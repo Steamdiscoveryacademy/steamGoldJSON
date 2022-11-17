@@ -1,0 +1,130 @@
+{
+    "ToDo": [
+        "get Address aligned with WiX Contact"
+    ],
+    "ppPerson": {
+        "id": {
+            "fieldId": "-999ZXZ",
+            "hint": "ppSTUB"
+        },
+        "fmId": "ppSTUB",
+        "name": {
+            "last": "STRING",
+            "first": "STRING"
+        },
+        "address": {
+            "street": "STRING",
+            "street_two": "STRING",
+            "city": "STRING",
+            "state": "STRING",
+            "zip": "STRING"
+        },
+        "emailPrimary": "PRIMARY_EMAIL",
+        "phonePrimaryMobile": "PRIMARY_MOBILE_PHONE",
+        "emailSecondary": "OPTIONAL_EMAIL",
+        "phoneSecondary": "OPTIONAL_PHONE"
+    },
+    "stPerson": {
+        "id": "stSTUB",
+        "fmId": "ppSTUB",
+        "name": {
+            "last": "STRING",
+            "first": "STRING",
+            "firstLegal": "STRING"
+        },
+        "dob": {
+            "month": 12,
+            "day": 25,
+            "year": 1999
+        },
+        "dobKentryYear": 1999,
+        "gender": "",
+        "grade": 777,
+        "gradeKentryYear": 1999,
+        "tShirtSize": "XXXL",
+        "anomalies": {
+            "grade": false,
+            "gender": false
+        },
+        "devIssues": [
+            "perferred.length === 0{preferred=first};first=preferred;firstLegal=first",
+            "FAUX_STUDENT_EMAIL",
+            "all Gender values .toUpperCase() for simplicity of arrays",
+            "IF {blank} then BLANK; IF female.includes() then FEMALE; IF male.includes() then MALE; IF alt.includes() then ALT else anomalies.gender = true",
+            "ABS(dob.kEntryYear - grade.kEntryYear) >= 2"
+        ],
+        "devNotes": [
+            "NO_PHONE_FOR_STUDENT",
+            "grades 0 [kindergarden] thru 12 [high school senior]",
+            "someday match to a table like dedupe"
+        ]
+    },
+    "spPerson": {
+        "id": "spSTUB",
+        "fmId": "ppSTUB",
+        "name": {
+            "last": "STRING",
+            "first": "STRING"
+        },
+        "email": "OPTIONAL_SINGLE_EMAIL",
+        "phone": "OPTIONAL_SINGLE_MOBLIE_PHONE",
+        "devIssues": [],
+        "devNotes": []
+    },
+    "courseArray": {
+        "steamRegionKey": "HNL",
+        "steamTermId": "200904",
+        "keyArray": [
+            "week 1 course Keys ETCETERA"
+        ],
+        "amomalies": {
+            "scheduleCollision": false,
+            "gradelevelMismatch": false
+        },
+        "devIssues": [
+            "evaluate course Grade-Level anomalies *after* resolving dob-grade anomalies"
+        ],
+        "devNotes": [
+            "any person can have multiple Regions ¬ª courses only ONE",
+            "any person can have multiple TermIds ¬ª courses only ONE",
+            "we *have* to let the keyExplosion *be* golden"
+        ]
+    },
+    "requirements": {
+        "devIssues": [],
+        "devNotes": [
+            "gender: this may be 'optional' but since it's inferred to 'BLANK' and 'BLANK' is an acceptable response it's kind of BOTH and NEITHER",
+            "gender: there are 'common' responses that transform into 'standard' responses",
+            "gender: these 'common' responses should be maintained and extended as needed"
+        ],
+        "requiredAttributes": {
+            "assertion": "ALL EXCEPT `inferred` and `optional` as part of this same sub-object",
+            "devIssues": [],
+            "devNotes": []
+        },
+        "inferredAttributes": {
+            "assertion": "IF Blank then can be inferred from another field",
+            "pathArray": [
+                "stPerson.name.first",
+                "stPerson.name.firstLegal"
+            ],
+            "devIssues": [
+                "only issue is if 'Legal' is 'Peggy' and first is blank"
+            ],
+            "devNotes": [
+                "either is a stand-in for the other",
+                "usually one is required in the Form Tool"
+            ]
+        },
+        "optionalAttributes": {
+            "assertion": "'Optional' means not answered without an anomaly being raised",
+            "pathArray": [
+                "stPerson.tShirtSize"
+            ],
+            "devIssues": [],
+            "devNotes": [
+                "tShirtSize: this may be 'required' by for Form Logic by form, but on some forms it is asked and on other forms it is not, in that way 'optional'"
+            ]
+        }
+    }
+}
