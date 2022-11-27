@@ -1,0 +1,18 @@
+{
+    "fieldAssignments": {
+        "pendingLogicalElementIdArray": [],
+        "assignedLogicalElementIdArray": [],
+        "automatedNonDataElementIdArray": [],
+        "manualNonDataElementIdArray": [],
+        "forOfficeUseOnlyElementIdArray": []
+    },
+    "targetKey": "fieldAssignments",
+    "targetKeyVerbose": "WAS: LogicalElementIdArraysByKindObject",
+    "formId": -777777,
+    "steps": [],
+    "notes": [],
+    "devIssues": [],
+    "devNotes": [
+        "Validation for Same Form ID for subfields"
+    ]
+}
