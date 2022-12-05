@@ -6,4 +6,4 @@ a place for JSON that is GOLD Data that any number of WiX (and other) processes 
 File Sources and Notes:
 * [ ] EACH FILE:
 * * [ ] Source Physical
-* * [ ] Source Relaative Path
+* * [ ] Source Relative Path
